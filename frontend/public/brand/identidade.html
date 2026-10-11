@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RotaPay — identidade visual</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f8fa; color: #102d3c; font: 15px/1.5 system-ui, sans-serif; }
+    main { max-width: 1120px; padding: 48px 24px; margin: auto; }
+    h1 { font-size: clamp(32px, 5vw, 48px); letter-spacing: -.05em; margin: 0; }
+    h2 { font-size: 20px; margin-top: 32px; }
+    p { color: #536b78; max-width: 680px; }
+    .logos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .logo { min-height: 190px; border: 1px solid #d5e2e9; border-radius: 16px; background: white; padding: 24px; display: flex; align-items: center; justify-content: center; }
+    .logo.dark { background: #0c1820; }
+    .logo img { width: 288px; max-width: 100%; }
+    .colors { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+    .swatch { border: 1px solid #d5e2e9; border-radius: 12px; background: white; overflow: hidden; }
+    .swatch b { display: block; height: 64px; background: var(--swatch); }
+    .swatch span { display: block; padding: 12px; font-size: 12px; }
+    .caption { border-top: 1px solid #d5e2e9; padding-top: 24px; margin-top: 32px; }
+    @media (max-width: 600px) { main { padding: 24px 16px; } .logos { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>RotaPay</h1>
+    <p>O RotaPay organiza as cobranças, os comprovantes e os pagamentos aos fornecedores</p>
+    <h2>Rotas claras.</h2>
+    <div class="logos">
+      <div class="logo"><img src="rotapay-logo.svg" alt="Logo RotaPay para fundo claro"></div>
+      <div class="logo dark"><img src="rotapay-logo-dark.svg" alt="Logo RotaPay para fundo escuro"></div>
+    </div>
+    <h2>Identidade e significado</h2>
+    <p>Uma rota contínua forma a letra R. Dois pontos representam origem e destino: o caminho de cada valor, da cobrança à conciliação.</p>
+    <div class="colors">
+      <div class="swatch" style="--swatch: #102d3c"><b></b><span>Azul-petróleo<br>#102D3C · estrutura</span></div>
+      <div class="swatch" style="--swatch: #64d5e8"><b></b><span>Ciano<br>#64D5E8 · rota</span></div>
+      <div class="swatch" style="--swatch: #09687f"><b></b><span>Petróleo ativo<br>#09687F · ação</span></div>
+      <div class="swatch" style="--swatch: #147a4b"><b></b><span>Verde<br>#147A4B · entradas</span></div>
+      <div class="swatch" style="--swatch: #9a6800"><b></b><span>Âmbar<br>#9A6800 · pendências</span></div>
+      <div class="swatch" style="--swatch: #b3261e"><b></b><span>Vermelho<br>#B3261E · dívidas/erros</span></div>
+    </div>
+    <p class="caption">Assinatura curta: Cobranças no caminho certo. · Design System: docs/design-system.md</p>
+  </main>
+</body>
+</html>

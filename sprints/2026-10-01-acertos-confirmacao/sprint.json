@@ -1,0 +1,24 @@
+{
+  "titulo": "Acertos e confirmação acompanhada",
+  "data": "2026-10-01",
+  "status": "entrega_local_validada",
+  "relatorio": "relatorio.md",
+  "testes_backend": 183,
+  "lint": {
+    "erros": 0,
+    "avisos": 0
+  },
+  "lint_tipos": {
+    "erros": 0,
+    "avisos_preexistentes": 200
+  },
+  "typescript": true,
+  "build": true,
+  "revisao": true,
+  "navegacao": true,
+  "banco_operacional_migrado": false,
+  "publicado": false,
+  "credito_conta_implementado": false,
+  "demo_local": "http://localhost:3014/acertos/1/conferencia",
+  "proximo": "Crédito de conta explícito e reutilização sem duplicar a fonte"
+}

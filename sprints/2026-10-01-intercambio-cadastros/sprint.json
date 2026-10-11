@@ -1,0 +1,29 @@
+{
+  "sprint": 8,
+  "titulo": "Intercâmbio, alertas e links",
+  "data_implementacao": "2026-10-01",
+  "data_fechamento": "2026-10-02",
+  "status": "entrega_local_validada",
+  "relatorio": "relatorio.md",
+  "testes_backend": 275,
+  "tempo_testes_segundos": 50.89,
+  "regressoes_novas": 31,
+  "lint": {
+    "erros": 0,
+    "avisos": 0
+  },
+  "lint_tipos": {
+    "erros": 0,
+    "avisos_preexistentes": 200
+  },
+  "typescript": true,
+  "build": true,
+  "revisao": true,
+  "demo_validada": true,
+  "registros_anteriores_preservados_tabelas": 23,
+  "banco_operacional_migrado": false,
+  "publicado": false,
+  "demo_local": "http://localhost:3018/intercambio",
+  "proximo": "Sprint9: catálogos financeiros e preferências de tabelas",
+  "proximo_autorizado": false
+}

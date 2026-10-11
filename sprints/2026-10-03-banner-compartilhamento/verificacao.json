@@ -1,0 +1,24 @@
+{
+  "pagina": 200,
+  "imagem": 200,
+  "dimensoes": [
+    1200,
+    630
+  ],
+  "og": {
+    "og:title": "RotaPay — Seu cliente pagou. Continue no controle.",
+    "og:description": "O RotaPay organiza as cobranças, os comprovantes e os pagamentos aos fornecedores.",
+    "og:url": "https://rotapay.site/",
+    "og:site_name": "RotaPay",
+    "og:locale": "pt_BR",
+    "og:image": "https://rotapay.site/brand/rotapay-compartilhar-v1.png",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "RotaPay: seu cliente pagou. Continue no controle.",
+    "og:type": "website",
+    "twitter:card": "summary_large_image",
+    "twitter:title": "RotaPay — Seu cliente pagou. Continue no controle.",
+    "twitter:description": "Cobranças, comprovantes e pagamentos aos fornecedores. Tudo organizado.",
+    "twitter:image": "https://rotapay.site/brand/rotapay-compartilhar-v1.png"
+  }
+}

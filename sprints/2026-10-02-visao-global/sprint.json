@@ -1,0 +1,34 @@
+{
+  "sprint": 14,
+  "nome": "Visão global e relatórios dos módulos novos",
+  "estado": "concluido_localmente",
+  "autorizacao": "Continue",
+  "legado_integrado": false,
+  "programacao_automatica": false,
+  "publicacao": false,
+  "concluido_em": "2026-10-03",
+  "retomada_autorizada": "ok continue o sprint",
+  "validacoes": {
+    "testes": 461,
+    "casos_novos": 28,
+    "python": "3.14.0",
+    "lint": "0 erros e avisos",
+    "typecheck": "aprovado",
+    "lint_tipos": "0 erros; 200 avisos preexistentes",
+    "build": "Next 16.3.8; 53 páginas",
+    "http": "API, SSR e CSV aprovados",
+    "tabelas_anteriores_preservadas": 37,
+    "visual_interativa": false,
+    "postgresql": false
+  },
+  "demo": {
+    "frontend": "http://localhost:3024/",
+    "api": "http://127.0.0.1:8024",
+    "dados": "sintéticos"
+  },
+  "multiempresa_validado": false,
+  "checkto_alterada": false,
+  "proximo_sprint_proposto": 15,
+  "proximo_escopo": "base multiempresa, vínculos de fornecedores e isolamento de acesso",
+  "proximo_estado": "aguardando_confirmacao"
+}

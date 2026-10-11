@@ -1,0 +1,6 @@
+import { apiGet } from "./api";
+import type { TipoCatalogo, Catalogos, Catalogo, PaginaCatalogo, TelaTabela, PreferenciaTabela } from "./configuracoes-types";
+async function listarTodos(tipo: TipoCatalogo, ativo?: boolean) { const itens: Catalogo[] = []; let offset = 0; let mais = true; while (mais) { const qs = new URLSearchParams({ limit: "500", offset: String(offset) }); if (ativo !== undefined) qs.set("ativo", String(ativo)); const pagina = await apiGet(`/configuracoes/catalogos/${tipo}?${qs}`) as PaginaCatalogo; itens.push(...pagina.itens); mais = pagina.tem_mais; if (mais && !pagina.itens.length) throw new Error("Catálogo sem avanço de paginação"); offset += pagina.itens.length; } return itens; }
+export async function carregarCatalogos(ativo?: boolean): Promise<Catalogos> { const [formas, operacoes, condicoes] = await Promise.all([listarTodos("formas", ativo), listarTodos("operacoes", ativo), listarTodos("condicoes", ativo)]); return { formas, operacoes, condicoes }; }
+export async function carregarPreferencia(tela: TelaTabela) { return await apiGet(`/configuracoes/tabelas/${tela}`) as PreferenciaTabela; }
+export function aplicarOrdenacao(qs: URLSearchParams, preferencia: PreferenciaTabela) { if (preferencia.ordenacao) { qs.set("ordenar_por", preferencia.ordenacao.campo); qs.set("direcao", preferencia.ordenacao.direcao); } }

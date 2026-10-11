@@ -1,0 +1,56 @@
+{
+  "sprint": 16,
+  "estado": "concluido_localmente",
+  "autorizacao": "ok siga",
+  "data": "2026-10-03",
+  "validacoes": {
+    "pytest": {
+      "aprovados": 519,
+      "novos": 23,
+      "segundos": 180.3,
+      "python": "3.14.0",
+      "avisos_preexistentes": 1
+    },
+    "lint": {
+      "erros": 0,
+      "avisos": 0
+    },
+    "typescript": "aprovado",
+    "lint_types": {
+      "erros": 0,
+      "avisos_preexistentes": 200
+    },
+    "build": "Next16.3.8 aprovado;55 paginas geradas",
+    "http": "duas lojas IDs iguais; portal/admin, declaracao, abatimento/estorno, equipe/revogacao e ultimo admin",
+    "tabelas_anteriores_preservadas_por_banco": 44,
+    "bancos_sinteticos": 3,
+    "init_idempotente": true,
+    "revisao": "sem P1/P2 pendentes no escopo",
+    "visual_interativo": false,
+    "postgresql": false
+  },
+  "demo": {
+    "frontend": "http://localhost:3027/organizacoes",
+    "api": "http://127.0.0.1:8027",
+    "controle": "/tmp/rotapay-portal-fornecedor-demo-20261003.db",
+    "financeiro": "/tmp/rotapay-portal-fornecedor-bancos-20261003"
+  },
+  "limites": [
+    "sem banco operacional/Checkto/OCR/publicacao",
+    "associacao imutavel; correcao especifica futura",
+    "conta interna nova nao criada por este fluxo",
+    "sem PostgreSQL/carga/visual interativo",
+    "politicas configuraveis e contestacao da declaracao futuras"
+  ],
+  "incidente_validacao": "falta de espaco temporario; cache derivado limpo; repeticao completa aprovada",
+  "proximo": {
+    "sprint": 17,
+    "proposta": "homologacao local, backup/restauracao e preparacao do piloto",
+    "estado": "aguarda_confirmacao"
+  },
+  "banco_operacional_alterado": false,
+  "gateway_chamado": false,
+  "mensagens_enviadas": false,
+  "deploy": false,
+  "commit_push": false
+}

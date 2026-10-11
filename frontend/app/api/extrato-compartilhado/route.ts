@@ -1,0 +1,9 @@
+import {NextResponse} from "next/server";
+import {API_URL} from "../../../lib/api";
+import {validarExtratoPublico,validarLojaPublica} from "../../../lib/extrato-publico-validacao";
+const headers={"Cache-Control":"private, no-store","Referrer-Policy":"no-referrer","X-Robots-Tag":"noindex, nofollow, noarchive","X-Content-Type-Options":"nosniff"};
+const indisponivel=(status:number)=>NextResponse.json({erro:"Este acesso está indisponível. Solicite um novo link ao responsável."},{status,headers});
+function parametroValido(k:string,v:string){const n=Number(v);if(!/^\d+$/.test(v)||!Number.isSafeInteger(n)||n<0)return false;return k.endsWith("limit") ? n>=1&&n<=100 : n<=100000;}
+function consulta(params:URLSearchParams){const permitidos=["notas_offset","pagamentos_offset","notas_limit","pagamentos_limit"];const qs=new URLSearchParams();for(const[k,v]of params){if(!permitidos.includes(k)||params.getAll(k).length!==1||!parametroValido(k,v))return null;qs.set(k,String(Number(v)));}return qs;}
+function statusSeguro(status:number){if(status===429)return 429;return status>=500 ? 502 : 404;}
+export async function GET(req:Request){const auth=req.headers.get("authorization")??"";if(!/^Bearer [A-Za-z0-9_-]{43}$/.test(auth))return indisponivel(404);const params=new URL(req.url).searchParams;if(params.getAll("loja").length>1)return indisponivel(400);const loja=validarLojaPublica(params.get("loja"));if(loja===null)return indisponivel(400);params.delete("loja");const qs=consulta(params);if(!qs)return indisponivel(400);try{const r=await fetch(`${API_URL}${loja===1 ? "" : `/lojas/${loja}`}/publico/extratos?${qs}`,{headers:{Authorization:auth},cache:"no-store",redirect:"error"});if(!r.ok)return indisponivel(statusSeguro(r.status));if(!r.headers.get("content-type")?.includes("application/json"))return indisponivel(502);const dados:unknown=await r.json();return NextResponse.json(validarExtratoPublico(dados),{headers});}catch{return indisponivel(502);}}

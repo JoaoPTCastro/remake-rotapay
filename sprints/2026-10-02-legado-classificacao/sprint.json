@@ -1,0 +1,32 @@
+{
+  "sprint": 13,
+  "nome": "Legado, classificação e ensaio em cópia",
+  "estado": "preparacao_concluida_localmente",
+  "autorizacao": "ok siga",
+  "consumo_integrado": false,
+  "migracao_operacional": false,
+  "publicacao": false,
+  "migracao_financeira_concluida": false,
+  "validacoes": {
+    "testes": 433,
+    "novos_casos": 37,
+    "python": "3.14.0",
+    "frontend": "lint, tipos, build e HTML aprovados",
+    "tabelas_anteriores_preservadas": 35,
+    "visual_interativa": false,
+    "postgresql": false
+  },
+  "pendencias": [
+    "decisão coexistir/substituir",
+    "dados reais e mapeamento documental",
+    "trava comum de consumo",
+    "ensaio de migração financeira"
+  ],
+  "demo": {
+    "frontend": "http://localhost:3023/legado",
+    "api": "http://127.0.0.1:8023",
+    "dados": "sintéticos"
+  },
+  "proximo_sprint": 14,
+  "proximo_estado": "aguardando_confirmacao"
+}

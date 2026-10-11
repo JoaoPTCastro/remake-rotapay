@@ -1,0 +1,29 @@
+{
+  "sprint": 7,
+  "titulo": "Extrato individual consolidado",
+  "data": "2026-10-01",
+  "status": "entrega_local_validada",
+  "relatorio": "relatorio.md",
+  "testes_backend": 244,
+  "testes_extrato": 17,
+  "integracao_mvp_adicional": true,
+  "lint": {
+    "erros": 0,
+    "avisos": 0
+  },
+  "lint_tipos": {
+    "erros": 0,
+    "avisos_preexistentes": 200
+  },
+  "typescript": true,
+  "build": true,
+  "revisao": true,
+  "navegacao_cliente": true,
+  "navegacao_fornecedor": true,
+  "financeiro_demo_inalterado_tabelas": 19,
+  "banco_operacional_migrado": false,
+  "publicado": false,
+  "demo_local": "http://localhost:3017/extratos",
+  "proximo": "Sprint 8: cadastros, alertas, links e importação/exportação",
+  "proximo_autorizado": false
+}

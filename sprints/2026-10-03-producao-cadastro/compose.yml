@@ -1,0 +1,29 @@
+name: rotapay-prod
+services:
+  api:
+    image: rotapay-prod-api:20261003
+    environment:
+      ENV: prod
+      SECRET_KEY: ${SECRET_KEY:?segredo exclusivo}
+      PRIVATE_PROXY_KEY: ${PRIVATE_PROXY_KEY:?chave interna}
+      REGISTER_PUBLIC_ENABLED: "true"
+      DATABASE_URL: sqlite:////data/central.sqlite3
+      TENANT_DATABASE_DIR: /data/tenants
+      UPLOAD_DIR: /data/uploads
+    volumes:
+      - dados:/data
+    ports:
+      - "127.0.0.1:8130:8000"
+    restart: unless-stopped
+  web:
+    image: rotapay-prod-web:20261003-v2
+    environment:
+      API_URL: http://api:8000
+      PRIVATE_PROXY_KEY: ${PRIVATE_PROXY_KEY:?chave interna}
+    ports:
+      - "127.0.0.1:3130:3000"
+    depends_on:
+      - api
+    restart: unless-stopped
+volumes:
+  dados:

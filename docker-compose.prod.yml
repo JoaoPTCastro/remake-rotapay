@@ -1,0 +1,50 @@
+# Produção na VPS: API + painel + HTTPS automático (Caddy).
+# Dados persistentes em volumes nomeados (pixdata) — deploy NÃO zera o banco.
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    expose:
+      - "8000"
+    volumes:
+      - pixdata:/data
+    environment:
+      SECRET_KEY: ${SECRET_KEY:?defina no .env}
+      ENV: prod
+      DATABASE_URL: sqlite:////data/pix.db
+      UPLOAD_DIR: /data/uploads
+      TENANT_DATABASE_DIR: /data/ambientes
+      # Opcional: só necessário no 1º seed (depois o endpoint trava sozinho).
+      SETUP_TOKEN: ${SETUP_TOKEN:-}
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    expose:
+      - "3000"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      DOMAIN: ${DOMAIN:?defina no .env}
+    depends_on:
+      - web
+    restart: unless-stopped
+
+volumes:
+  pixdata:
+  caddy_data:
+  caddy_config:

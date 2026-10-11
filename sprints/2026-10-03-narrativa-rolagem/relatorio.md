@@ -1,0 +1,7 @@
+# Narrativa por rolagem — 03/10/2026
+
+Usuário rejeitou os simuladores e solicitou apresentação passiva semelhante a vídeo/animação por imagens e parallax. LinkPreview e Example retirados da renderização, preservados em fonte para recuperação. PaymentStory apresenta venda porta a porta com fundo limpo editado via imagegen, GSAP ScrollTrigger com pin/scrub e etapas link→pagamentoilustrado→comprovante. Sem inputs ou botões de simulação. Hero anterior preservado e ligado à sequência abaixo. Esta versão usa fotografia/camadas/câmera animadas; não é vídeo de personagens nem sequência de frames de filme.
+
+Lint/TS/detector/revisão aprovados. Revisão levantou telas baixas: pin desabilitado quandoaltura<720, etapas estáticas legíveis; reduced-motion idem. Primeiro buildfinal falhou por disco cheio; Docker builder cache limpo22,74GB sem remover bancos/uploads/containers/imagens emuso, disco de100% para66%/17G livres. Build final aprovado e web rotapay-prod-web:story-final-20261003 publicada.
+
+Navegador público confirmou transições com scroll, estado pagamento opacity1 e depois comprovante opacity1; simulador ausente; mobile390 semoverflow; landscape390pxalto mostra3etapas estáticas. HTML/asset/cadastro200. OGv3 preservado. Sem alterações financeiras/auth/commit/push. Screenshot desktop anexada. Reversão visual anterior banner-v3-20261003; não retornar link-demo rejeitado. Próximo: aprovação visual e, se desejado, produção de vídeo real/frames e integração ao hero principal; não confundir esta camada animada com vídeo gerado.

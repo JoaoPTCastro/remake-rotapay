@@ -1,0 +1,16 @@
+{
+  "sprint": 18,
+  "data": "2026-10-03",
+  "estado": "testes_publicos_sinteticos_disponiveis_aceite_pendente",
+  "autorizacao": "vamos seguir; preparacao local",
+  "validacao": {
+    "backup_testes": 22,
+    "docker": "build API e web remoto aprovado; Compose validado",
+    "testes_imagem": 545,
+    "tempo_s": 422.61,
+    "http": "smoke aprovado"
+  },
+  "publicacao_autorizada": "somente homologacao sintetica em rotapay.site",
+  "hospedagem": "VPS existente; acesso e estado atual pendentes",
+  "dominio": "https://rotapay.site"
+}

@@ -1,0 +1,38 @@
+# segredos / local
+.mcp.json
+.env
+*.db
+*.db-journal
+uploads/
+__pycache__/
+.pytest_cache/
+# frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+wa-gateway/node_modules/
+wa-gateway/data/
+test-results/
+playwright-report/
+
+# Dados privados, evidências de clientes e artefatos locais
+.env.*
+!.env.example
+*.sqlite3
+*.sqlite3-*
+*.db-wal
+*.db-shm
+backups-locais/
+ambientes-locais/
+sprints/**/evidencias/
+sprints/**/*.png
+sprints/**/*.jpg
+sprints/**/*.ogg
+sprints/**/*.wav
+sprints/**/*.csv
+sprints/**/*.zip
+sprints/**/*.tar.gz
+sprints/2026-10-01-respostas-audio/
+sprints/2026-10-03-definicoes-produto/
+Idendidade ROTAPAY/
+frontend/tsconfig.tsbuildinfo

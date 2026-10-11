@@ -1,0 +1,10 @@
+export type TipoCatalogo = "formas" | "operacoes" | "condicoes";
+export type Catalogo = { id: number; nome: string; ativo: boolean; forma_base: "PIX" | "dinheiro" | null; aplicavel_em: "notas" | "pagamentos" | "ambos"; prazo_dias: number | null };
+export type PaginaCatalogo = { itens: Catalogo[]; total: number; limit: number; offset: number; tem_mais: boolean };
+export type Catalogos = { formas: Catalogo[]; operacoes: Catalogo[]; condicoes: Catalogo[] };
+export type TelaTabela = "cadastros" | "notas" | "pagamentos";
+export type PreferenciaTabela = { colunas: { campo: string; visivel: boolean }[]; ordenacao: { campo: string; direcao: "asc" | "desc" } | null; filtros: Record<string, string | number | boolean> };
+export type ResultadoConfiguracao = { ok: boolean; mensagem: string };
+export const rotulosColunas: Record<string, string> = { nome: "Nome", tipo: "Tipo", documento: "CPF/CNPJ", telefone: "Telefone", email: "E-mail", prazo_dias: "Prazo em dias", ativo: "Situação", numero_documento: "Nota", pessoa_nome: "Titular", relacao: "Relação", valor_original: "Original", valor_abatido: "Abatido registrado", saldo_aberto: "Saldo da nota", data_emissao: "Emissão", vencimento: "Vencimento", status: "Situação", codigo: "Pagamento", forma: "Forma", cliente_nome: "Cliente", fornecedor_nome: "Fornecedor", valor: "Valor único", data: "Data", cancelado: "Situação" };
+export const camposOrdenacao: Record<TelaTabela, string[]> = { cadastros: ["nome", "tipo", "documento", "prazo_dias", "ativo"], notas: ["numero_documento", "pessoa_nome", "relacao", "valor_original", "valor_abatido", "saldo_aberto", "data_emissao", "vencimento", "status"], pagamentos: ["codigo", "tipo", "forma", "cliente_nome", "fornecedor_nome", "valor", "data", "cancelado"] };
+export const obrigatoriaTabela: Record<TelaTabela, string> = { cadastros: "nome", notas: "numero_documento", pagamentos: "codigo" };

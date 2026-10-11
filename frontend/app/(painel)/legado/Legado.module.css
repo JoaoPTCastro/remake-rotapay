@@ -1,0 +1,15 @@
+.stack { display: grid; gap: 20px; }
+.notice { border-left: 4px solid var(--brand); padding: 14px 18px; background: var(--brand-2); border-radius: 8px; }
+.filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.filters label { min-width: 220px; flex: 1; }
+.record { border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--surface); }
+.record summary { cursor: pointer; font-weight: 600; overflow-wrap: anywhere; }
+.form { display: grid; gap: 14px; margin-top: 18px; }
+.form label { display: grid; gap: 6px; }
+.form textarea { width: 100%; min-height: 100px; resize: vertical; }
+.form .check { display: flex; align-items: flex-start; gap: 10px; }
+.check input { width: auto; margin-top: 4px; }
+.preview { padding: 16px; background: var(--surface-2); border-radius: 10px; overflow-wrap: anywhere; }
+.pagination { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.facts { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.facts p { margin: 8px 0; overflow-wrap: anywhere; }

@@ -1,0 +1,34 @@
+.manager label {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+.manager label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: center;
+}
+.manager label input:not([type="checkbox"]),
+.manager label select {
+  width: 100%;
+  min-width: 0;
+}
+.manager form {
+  gap: 14px;
+}
+.manager details {
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+.manager summary {
+  cursor: pointer;
+  font-weight: 650;
+  padding: 4px 0;
+  overflow-wrap: anywhere;
+}
+.manager code {
+  overflow-wrap: anywhere;
+}

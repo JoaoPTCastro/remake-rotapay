@@ -1,0 +1,31 @@
+{
+  "sprint": 11,
+  "nome": "Administração, perfil e permissões",
+  "data": "2026-10-02",
+  "estado": "concluido_localmente",
+  "autorizacao": "pode começar; continue",
+  "backend_testes": 358,
+  "novos_testes": 35,
+  "tempo_pytest_segundos": 107.43,
+  "python": "3.14.0",
+  "sqlite": "validado",
+  "postgresql": "não executado",
+  "lint_erros": 0,
+  "lint_avisos": 0,
+  "lint_tipado_avisos_preexistentes": 200,
+  "typescript": "aprovado",
+  "build": "Next.js 16.3.8 aprovado",
+  "matriz_rotas_autenticadas": 132,
+  "acoes_consulta": 63,
+  "preservacao_tabelas_anteriores": 34,
+  "migracao_operacional": false,
+  "publicacao": false,
+  "pendencias": [
+    "Definição da loja para permissões personalizadas e dados pessoais adicionais",
+    "Canal de convites e escopo de compartilhamento externo",
+    "Validação de PostgreSQL não executada"
+  ],
+  "proximo_sprint": 12,
+  "proximo_estado": "Sprint 12 autorizado pelo usuário",
+  "conferencia_visual": "Confirmada manualmente pelo usuário ao autorizar o Sprint 12; sem repetição automatizada pelo agente"
+}

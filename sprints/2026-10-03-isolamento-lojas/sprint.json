@@ -1,0 +1,57 @@
+{
+  "sprint": "15B",
+  "estado": "concluido_localmente",
+  "sprint_15_base_multiempresa_concluida": true,
+  "autorizacao": "pode seguir",
+  "continuidade": "pode continuar",
+  "data": "2026-10-03",
+  "validacoes": {
+    "pytest": {
+      "aprovados": 496,
+      "novos": 18,
+      "segundos": 218.37,
+      "python": "3.14.0",
+      "avisos_preexistentes": 1
+    },
+    "lint": {
+      "erros": 0,
+      "avisos": 0
+    },
+    "typescript": "aprovado",
+    "lint_types": {
+      "erros": 0,
+      "avisos_preexistentes": 200
+    },
+    "build": "Next16.3.8 aprovado;55paginasgeradas",
+    "http": "duaslojasIDsiguais/saldos/anexos/CSV/publicosconfere",
+    "tabelas_anteriores_preservadas": 43,
+    "init_idempotente": true,
+    "revisao": "sem P1/P2 pendentes no escopo",
+    "visual_interativo": false,
+    "postgresql": false
+  },
+  "demo": {
+    "frontend": "http://localhost:3026/organizacoes",
+    "api": "http://127.0.0.1:8026",
+    "controle": "/tmp/rotapay-isolamento-lojas-demo-20261003.db",
+    "financeiro": "/tmp/rotapay-isolamento-lojas-bancos-20261003",
+    "uploads": "/tmp/rotapay-isolamento-lojas-uploads-20261003"
+  },
+  "limites": [
+    "portal fornecedor limitado pendente",
+    "administracao equipe por vinculo pendente",
+    "Checkto por organizacao pendente",
+    "OCR pendente",
+    "sem PostgreSQL/carga/operacional"
+  ],
+  "proximo": {
+    "sprint": 16,
+    "proposta": "portal fornecedor e gestao de vinculos",
+    "estado": "aguarda_confirmacao"
+  },
+  "banco_operacional_alterado": false,
+  "gateway_chamado": false,
+  "mensagens_enviadas": false,
+  "deploy": false,
+  "commit_push": false
+}

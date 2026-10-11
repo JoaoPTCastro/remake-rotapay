@@ -1,0 +1,14 @@
+export const FONTES_LEGADO = ["movimentacao", "lancamento", "projecao", "conciliacao", "estorno", "abatimento_documental"] as const;
+export type FonteLegado = typeof FONTES_LEGADO[number];
+export type DecisaoLegado = "pendente" | "manter_legado" | "avaliar_transicao";
+export type RelacaoLegado = "cliente" | "fornecedor";
+export const NOMES_FONTES: Record<FonteLegado, string> = { movimentacao: "PIX / movimentações", lancamento: "Lançamentos", projecao: "Projeções", conciliacao: "Conciliações", estorno: "Estornos", abatimento_documental: "Abatimentos documentais" };
+export const NOMES_DECISOES: Record<DecisaoLegado, string> = { pendente: "Manter pendente", manter_legado: "Preservar no legado", avaliar_transicao: "Avaliar transição futura" };
+export type ParLegado = { pessoa_id: number; relacao: RelacaoLegado };
+export type ItemInventarioLegado = { fonte: FonteLegado; fonte_id: number; snapshot_hash: string; codigo?: string | null; status?: string | null; data?: string | null; valores: Record<string, number | null>; vinculos: Record<string, number | string | null>; relacoes_conhecidas: ParLegado[]; pendencias: string[]; classificacao: { id: number; decisao: DecisaoLegado; lote_id: number; snapshot_atual?: boolean } | null };
+export type InventarioLegado = { fonte: FonteLegado; itens: ItemInventarioLegado[]; total: number; limit: number; offset: number; tem_mais: boolean; conversao_habilitada: false; impacto_financeiro: "nenhum" };
+export type ItemClassificacaoLegado = { fonte: FonteLegado; fonte_id: number; snapshot_hash: string; decisao: DecisaoLegado; evidencia: string; pessoa_id?: number | null; relacao?: RelacaoLegado | null };
+export type PreviaLegado = { hash_previa: string; total: number; itens: (ItemClassificacaoLegado & { pendencias?: string[]; valores: Record<string, number | null>; vinculos: Record<string, number | string | null> })[]; conversao_habilitada: false; impacto_financeiro: "nenhum" };
+export type ReciboLegado = { id: number; chave_idempotencia: string; hash_previa: string; payload_hash: string; created_by: number; created_at: string; itens: ItemClassificacaoLegado[]; repetido?: boolean; conversao_habilitada: false; impacto_financeiro: "nenhum" };
+export type PaginaRecibosLegado = { itens: ReciboLegado[]; total: number; limit: number; offset: number; tem_mais: boolean };
+export type ResultadoLegado<T> = { ok: true; dados: T } | { ok: false; mensagem: string };

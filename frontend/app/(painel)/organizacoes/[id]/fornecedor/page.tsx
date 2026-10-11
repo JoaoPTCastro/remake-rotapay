@@ -1,0 +1,26 @@
+import Link from "next/link";
+import { notFound, unstable_rethrow } from "next/navigation";
+import { apiGet } from "../../../../../lib/api";
+import type { PortalFornecedor } from "../../../../../lib/fornecedor-types";
+import { ChaveFornecedorForm, RecebimentoFornecedorForm } from "../../FornecedorForms";
+import styles from "../../Organizacoes.module.css";
+
+const dinheiro = (valor: number) => new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(valor);
+const data = (valor: string) => { const partes = valor.slice(0, 10).split("-"); return partes.length === 3 ? partes.reverse().join("/") : valor; };
+export default async function FornecedorPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  if (!/^[1-9]\d*$/.test(id) || !Number.isSafeInteger(Number(id))) notFound();
+  let portal: PortalFornecedor;
+  try { portal = await apiGet(`/organizacoes/${id}/portal-fornecedor`) as PortalFornecedor; }
+  catch (erro) {
+    unstable_rethrow(erro);
+    return <section className={styles.box}><h1>Portal do fornecedor indisponível</h1><p role="alert">A loja precisa vincular sua conta ao cadastro de fornecedor e manter seu acesso ativo. Se o vínculo já está preparado, tente novamente mais tarde.</p><Link href="/organizacoes">Voltar aos seus vínculos</Link></section>;
+  }
+  return <div className={styles.stack}>
+    <header><Link href="/organizacoes">← Suas lojas</Link><h1>Portal do fornecedor</h1><p>{portal.organizacao_nome} · {portal.fornecedor.nome}</p></header>
+    <div className={styles.notice}>Você consulta os pagamentos destinados ao seu cadastro nesta loja. Declarar recebimento é um registro feito por você: a confirmação bancária depende da integração e nenhum abatimento é aplicado automaticamente.</div>
+    <section className={styles.box}><h2>Recebimentos nesta loja</h2><p>Total registrado: <strong>{dinheiro(portal.resumo.total_recebimentos)}</strong> · Declarado por você: <strong>{dinheiro(portal.resumo.total_declarado)}</strong></p><p>Saldo das notas: <strong>{dinheiro(portal.resumo.saldo_notas)}</strong> · Disponível para abatimento: <strong>{dinheiro(portal.resumo.saldo_disponivel)}</strong> · Total aplicado: <strong>{dinheiro(portal.resumo.total_aplicado)}</strong></p><p className="muted">Estes valores representam pagamentos registrados; não são saldo bancário.</p></section>
+    <section className={styles.box}><h2>Notas desta loja</h2>{!portal.notas.length ? <p>Nenhuma nota vinculada ao seu cadastro.</p> : <div className={styles.list}>{portal.notas.map(nota => <article key={nota.id} className={styles.payment}><strong>{nota.numero_documento || `Nota #${nota.id}`}</strong><p>Valor: {dinheiro(nota.valor_original)} · Saldo da nota: {dinheiro(nota.saldo)} · {nota.situacao === "quitada" ? "Quitada" : nota.situacao === "cancelada" ? "Cancelada" : "Aberta"}</p>{nota.vencimento && <p>Vencimento: {data(nota.vencimento)}</p>}</article>)}</div>}</section><section className={styles.box}><h2>Pagamentos</h2>{!portal.pagamentos.length ? <p className="muted">Nenhum pagamento destinado ao seu cadastro nesta loja.</p> : <div className={styles.list}>{portal.pagamentos.map(pagamento => <article key={pagamento.id} className={styles.payment}><h3>{pagamento.codigo} · {dinheiro(pagamento.valor)}</h3><p>{data(pagamento.data)} · {pagamento.tipo === "cliente_fornecedor" ? "Cliente para fornecedor" : "Repasse da loja"} · {pagamento.forma}</p><p>Aplicado: {dinheiro(pagamento.orcamento.aplicado)} · Disponível para abatimento: {dinheiro(pagamento.orcamento.saldo_disponivel)}</p>{pagamento.cancelado && <p className="error">Pagamento cancelado</p>}{pagamento.recebimento ? <div><p className={pagamento.recebimento.situacao === "declarado" ? "pos" : "error"}>{pagamento.recebimento.situacao === "divergente" ? "Declaração divergente do pagamento atual" : pagamento.recebimento.situacao === "cancelado" ? "Declaração ligada a pagamento cancelado" : "Recebimento declarado por você"} em {data(pagamento.recebimento.created_at)} · Valor declarado: {dinheiro(pagamento.recebimento.valor_declarado)}</p>{pagamento.recebimento.referencia && <p>Referência: {pagamento.recebimento.referencia}</p>}{pagamento.recebimento.observacao && <p>{pagamento.recebimento.observacao}</p>}</div> : !pagamento.cancelado && <RecebimentoFornecedorForm org={portal.organizacao_id} pagamento={pagamento.id} />}</article>)}</div>}</section>
+    <section className={styles.box}><h2>Suas chaves PIX nesta loja</h2><p className="muted">Revise titular e dados antes de salvar. As alterações se aplicam ao seu cadastro desta loja. Alterar ou desativar uma chave pode tornar links existentes indisponíveis; a loja precisa revisar as cobranças.</p>{!portal.chaves_pix.length && <p>Nenhuma chave cadastrada.</p>}<div className={styles.list}>{portal.chaves_pix.map(chave => <details key={chave.id} className={styles.payment}><summary>{chave.chave} · {chave.principal ? "Principal" : chave.categoria === "temporaria" ? "Temporária" : "Fixa"} · {chave.ativo ? "Ativa" : "Inativa"}</summary><ChaveFornecedorForm org={portal.organizacao_id} chave={chave} /></details>)}</div><details className={styles.payment}><summary>Adicionar chave PIX</summary><ChaveFornecedorForm org={portal.organizacao_id} /></details></section>
+  </div>;
+}

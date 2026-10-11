@@ -1,0 +1,11 @@
+import type { Nota, RelacaoNota } from "./notas-types";
+export type CreditoStatus = "disponivel" | "parcial" | "utilizado" | "revertido";
+export type CreditoEstorno = { id: number; motivo: string; created_by: number; created_at: string };
+export type CreditoAplicacao = { id: number; acerto_id: number | null; credito_id: number; nota_id: number; numero_documento: string; valor: number; data: string; referencia: string; observacao: string; chave_idempotencia: string; fornecedor_confirmou: boolean; referencia_confirmacao: string | null; nota_abatimento_id: number; estornada: boolean; created_at: string; estorno: CreditoEstorno | null };
+export type Credito = { id: number; codigo: string; pessoa_id: number; pessoa_nome: string; relacao: RelacaoNota; acerto_id: number; codigo_acerto: string; pagamento_id: number; codigo_pagamento: string; valor_original: number; valor_aplicado: number; saldo_disponivel: number; status: CreditoStatus; data: string; referencia: string; observacao: string; fornecedor_confirmou: boolean; referencia_confirmacao: string | null; chave_idempotencia: string; created_at: string; reversao: CreditoEstorno | null; aplicacoes?: CreditoAplicacao[] };
+export type CreditoFonte = { pagamento_id: number; codigo_pagamento: string; valor_original: number; sobra_snapshot: number; credito_ativo_origem: number; saldo_pagamento: number; maximo_reconhecivel: number };
+export type CreditoOrigem = { acerto_id: number; pessoa_id: number; pessoa_nome: string; relacao: RelacaoNota; data_acerto: string; fontes: CreditoFonte[]; tem_mais: boolean; offset: number; limit: number };
+export type CreditoNotas = { notas: Nota[]; tem_mais: boolean; offset: number; limit: number };
+export type CreditoResultado = { ok: boolean; mensagem: string; id?: number };
+export type CreditoConsulta<T> = { ok: true; dados: T } | { ok: false; mensagem: string };
+export const statusCredito = (status: CreditoStatus) => ({ disponivel: "Disponível", parcial: "Parcialmente usado", utilizado: "Integralmente usado", revertido: "Reconhecimento revertido" })[status];

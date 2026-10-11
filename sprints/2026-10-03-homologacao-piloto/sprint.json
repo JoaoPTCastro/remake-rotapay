@@ -1,0 +1,52 @@
+{
+  "sprint": 17,
+  "estado": "preparacao_local_concluida_piloto_real_pendente",
+  "autorizacao": "ok faça esse",
+  "data": "2026-10-03",
+  "validacoes": {
+    "pytest": {
+      "aprovados": 545,
+      "novos": 26,
+      "segundos": 228.84,
+      "python": "3.14.0",
+      "avisos_preexistentes": 1
+    },
+    "focados": {
+      "aprovados": 26,
+      "segundos": 5.91
+    },
+    "fontes_app_frontend_sprint16": "inalteradas; build/lint/tipos anteriores não repetidos",
+    "http_ssr_restaurado": "aprovado",
+    "bancos_recuperados": 3,
+    "arquivos_recuperados": 7,
+    "tabelas_preservadas": [
+      46,
+      45,
+      45
+    ],
+    "backup_sqlite_integridade": "aprovado",
+    "revisao": "sem P1/P2 pendentes nas fontes novas revisadas",
+    "visual_interativo": false,
+    "postgresql": false,
+    "carga": false
+  },
+  "demo": {
+    "frontend": "http://localhost:3028/organizacoes",
+    "api": "http://127.0.0.1:8028",
+    "restaurado": "/private/tmp/rotapay-s17-restaurado-final",
+    "pacote_backup": "/private/tmp/rotapay-s17-backup"
+  },
+  "aceite_loja": false,
+  "comparacao_planilha_real": false,
+  "piloto_real": false,
+  "proximo": {
+    "sprint": 18,
+    "estado": "aguarda_confirmacao_e_pre_requisitos",
+    "proposta": "definir ambiente e preparar ativacao com dados reconciliados; publicacao/migracao somente autorizadas especificamente"
+  },
+  "banco_operacional_alterado": false,
+  "gateway_chamado": false,
+  "mensagens_enviadas": false,
+  "deploy": false,
+  "commit_push": false
+}

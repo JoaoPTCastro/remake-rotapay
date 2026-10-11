@@ -1,0 +1,11 @@
+{
+  "nome": "RotaPay — planejamento da revisão da loja",
+  "data": "2026-09-30",
+  "estado": "planejamento_entregue",
+  "fonte": "https://whimsical.com/projeto-programa-pix-6weK7PYQFRv3TzSgG65fiU",
+  "escopo": "analise_e_planejamento",
+  "aplicacao_alterada": false,
+  "implementacao_autorizada": false,
+  "decisoes_financeiras": "pendentes_de_validacao",
+  "entregas": ["brief.md", "evidencias/requisitos-mapa.md", "blueprint.md", "revisao.md"]
+}

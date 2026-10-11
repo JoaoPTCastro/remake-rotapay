@@ -1,0 +1,27 @@
+# Projeto independente: rotapay-s18. Sem proxy público ou volume operacional.
+name: rotapay-s18
+services:
+  api:
+    image: rotapay-s18-api:homologacao
+    environment:
+      ENV: prod
+      SECRET_KEY: ${SECRET_KEY:?segredo exclusivo de homologacao}
+      DATABASE_URL: sqlite:////data/ambiente/central.sqlite3
+      TENANT_DATABASE_DIR: /data/ambiente/tenants
+      UPLOAD_DIR: /data/ambiente/uploads
+    volumes:
+      - dados_sinteticos:/data
+    ports:
+      - "127.0.0.1:8128:8000"
+  web:
+    image: rotapay-s18-web:homologacao
+    environment:
+      API_URL: http://api:8000
+    ports:
+      - "127.0.0.1:3128:3000"
+    depends_on:
+      - api
+volumes:
+  dados_sinteticos:
+    external: true
+    name: rotapay-s18_dados_sinteticos

@@ -1,0 +1,11 @@
+# Sprint 14 — Visão global e relatórios dos módulos novos
+
+Autorização em 02/10/2026: “Continue”. Aplicar workflow Fullstack Developer já lido. Objetivo: novo painel principal, posições por titular/relação e relatórios verificáveis nos extratos individuais. Preservar consulta ao painel legado, explicitamente separado.
+
+Notas, pagamentos, créditos e acertos do domínio novo; contas cliente/fornecedor independentes, cancelados/estornos excluídos corretamente. Créditos e PIX direto não viram entradas de caixa. Fluxo de caixa apenas declara eventos novos cliente→loja e repasse→fornecedor, separados de pagamento direto. Cobertura parcial explícita: não é caixa bancário, receita ou total integrado do negócio. Legado/projeções não entram nos montantes novos.
+
+Fila somente consulta de notas abertas, com ordenação documental determinística e vínculo para documento. Não implementar novas prioridades/rodízio automático/programação sem critérios da loja; requisitos ficam no Sprint 15. Exportação CSV privada filtrada, BOM/ponto-e-vírgula/centavos, com proteção contra fórmula e limite explícito sem truncar. Leituras não alteram tabelas financeiras.
+
+Onda1: backend app/visao_geral.py e app/routers/visao_geral.py; extração pontual de cálculo comum app/routers/extratos.py se necessária; app/main.py include. Onda2, depois contrato: frontend painel/page.tsx + DashboardLegado.tsx + visao-geral/**, lib/visao-geral-types.ts, proxy privado APIvisao-geral/export e Shell; testes tests/test_visao_geral.py e um caso em test_mvp.py. Revisores somente leitura, raiz docs/evidências. Sem arquivos concorrentes comuns. Sem commit/push/deploy, dados operacionais, migração ou transmissão.
+
+Aceite: global = soma dos extratos por relação; paginação não muda totais; titulares inativos com histórico não desaparecem; ambospapéis não duplica caixa; crédito reconhecido substitui fonte disponível; estornos/reversões/cancelamentos refletidos; fila exclui cancelados/quitados/projeções; CSV mesmas posições/filtros; acessos reais e rejeição de entradas inválidas. Testes backend canônicos Python3.14; frontend lint/tipos/build; HTTP/HTML em cópia sintética. Bloqueio anterior do navegador respeitado, sem alegar visual/mobile.

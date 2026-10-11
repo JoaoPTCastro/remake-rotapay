@@ -1,0 +1,24 @@
+{
+  "sprint": 9,
+  "nome": "Configurações e preferências de tabelas",
+  "data": "2026-10-02",
+  "estado": "concluido_localmente",
+  "autorizacao": "continue",
+  "backend_testes": 298,
+  "novos_testes": 23,
+  "lint_erros": 0,
+  "lint_avisos": 0,
+  "lint_tipado_avisos_preexistentes": 200,
+  "typescript": "aprovado",
+  "build": "aprovado",
+  "revisao": "sem P1/P2 pendentes",
+  "preservacao_tabelas_anteriores": 32,
+  "migracao_operacional": false,
+  "publicacao": false,
+  "proximo_sprint": 10,
+  "proximo_estado": "aguardando_confirmacao",
+  "pendencias": [
+    "Classificação compra/devolução e Entrada/Saída versus Crédito/Débito pela loja",
+    "PostgreSQL e Python3.14 não executados"
+  ]
+}

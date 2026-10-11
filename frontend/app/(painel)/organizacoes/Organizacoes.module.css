@@ -1,0 +1,13 @@
+.stack { display: grid; gap: 24px; }
+.box { padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.notice { padding: 16px 20px; border-left: 4px solid var(--brand); border-radius: 10px; background: var(--brand-2); }
+.form { display: grid; gap: 14px; max-width: 560px; }
+.list { display: grid; gap: 14px; }
+.row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.token { display: block; padding: 16px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; overflow-wrap: anywhere; user-select: all; }
+.status { color: var(--muted); margin: 0; }
+.payment { padding: 16px; border: 1px solid var(--border); border-radius: 10px; overflow-wrap: anywhere; }
+.payment summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
+.payment[open] summary { margin-bottom: 16px; }
+.form input:not([type="checkbox"]), .form select, .form textarea { width: 100%; min-width: 0; }
+.form label { overflow-wrap: anywhere; }

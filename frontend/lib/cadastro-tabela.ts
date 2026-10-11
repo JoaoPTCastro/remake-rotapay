@@ -1,0 +1,5 @@
+import type { CadastroPessoa } from "./cadastro-types";
+import type { PreferenciaTabela } from "./configuracoes-types";
+export function ordenarCadastros(pessoas: CadastroPessoa[], preferencia: PreferenciaTabela) { const ordem = preferencia.ordenacao; if (!ordem) return pessoas; const campo = ordem.campo as "nome" | "tipo" | "documento" | "prazo_dias" | "ativo"; return [...pessoas].sort((a, b) => { const x = a[campo]; const y = b[campo]; const diferenca = typeof x === "string" && typeof y === "string" ? x.localeCompare(y, "pt-BR", { numeric: true, sensitivity: "base" }) : Number(x) - Number(y); const comparacao = diferenca || a.id - b.id; return ordem.direcao === "desc" ? -comparacao : comparacao; }); }
+export function filtrosCadastro(tipo: string, situacao: string, busca: string): PreferenciaTabela["filtros"] { return { q: busca, ...(tipo !== "todos" ? { tipo } : {}), ...(situacao !== "todos" ? { ativo: situacao === "ativos" } : {}) }; }
+export function situacaoCadastro(filtros: PreferenciaTabela["filtros"]) { return filtros.ativo === undefined ? "todos" : filtros.ativo ? "ativos" : "inativos"; }

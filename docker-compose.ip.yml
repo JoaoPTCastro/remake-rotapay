@@ -1,0 +1,12 @@
+# VPS com Caddy do host. Validar disponibilidade das portas antes de usar.
+# docker compose -f docker-compose.prod.yml -f docker-compose.ip.yml ...
+services:
+  api:
+    ports:
+      - "127.0.0.1:8000:8000"
+  web:
+    ports:
+      - "127.0.0.1:3000:3000"
+  caddy:
+    profiles:
+      - https-compose

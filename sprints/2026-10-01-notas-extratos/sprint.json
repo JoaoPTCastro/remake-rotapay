@@ -1,0 +1,11 @@
+{
+  "titulo": "Notas e extratos",
+  "data": "2026-10-01",
+  "status": "entrega_local_validada",
+  "relatorio": "relatorio.md",
+  "testes_backend": 132,
+  "banco_operacional_migrado": false,
+  "publicado": false,
+  "demo_local": "http://localhost:3012/notas/1",
+  "proximo": "Pagamentos por relação e conservação de saldo"
+}

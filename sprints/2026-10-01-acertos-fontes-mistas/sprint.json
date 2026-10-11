@@ -1,0 +1,28 @@
+{
+  "titulo": "Acertos com pagamentos e créditos",
+  "sprint": 6,
+  "data": "2026-10-01",
+  "status": "entrega_local_validada",
+  "relatorio": "relatorio.md",
+  "testes_backend": 226,
+  "testes_novos_fontes_mistas": 21,
+  "integracao_mvp_adicional": true,
+  "lint": {
+    "erros": 0,
+    "avisos": 0
+  },
+  "lint_tipos": {
+    "erros": 0,
+    "avisos_preexistentes": 200
+  },
+  "typescript": true,
+  "build": true,
+  "revisao": true,
+  "navegacao_cliente": true,
+  "navegacao_fornecedor": true,
+  "banco_operacional_migrado": false,
+  "publicado": false,
+  "demo_local": "http://localhost:3016/acertos/4",
+  "proximo": "Sprint 7: extrato individual consolidado e acesso pelo cadastro",
+  "proximo_autorizado": false
+}

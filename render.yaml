@@ -1,0 +1,32 @@
+# Render Blueprint — MODO DEMONSTRAÇÃO (grátis).
+# Sem disco: banco e comprovantes ZERAM a cada deploy/reinício. Ideal p/ teste de telas.
+# Para piloto real, ver docs/deploy-render.md (API Starter + disco).
+services:
+  - type: web
+    name: pix-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ENV
+        value: prod
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.12.0
+    healthCheckPath: /health
+
+  - type: web
+    name: pix-painel
+    runtime: node
+    plan: free
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start -- --port $PORT --hostname 0.0.0.0
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      # Aponta para a API real em produção (nome gerado pelo Render):
+      - key: API_URL
+        value: https://pix-api-kus9.onrender.com

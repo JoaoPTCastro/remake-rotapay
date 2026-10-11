@@ -1,0 +1,33 @@
+{
+  "sprint": 12,
+  "nome": "Extrato compartilhado com escopo",
+  "estado": "concluido_localmente",
+  "autorizacao": "ta certo, pode seguir para o sprint 12",
+  "escopo_confirmado": {
+    "destinatario": "próprio cliente/fornecedor",
+    "validade_dias": 7,
+    "visivel": [
+      "valores e situações das notas",
+      "valores e situações dos pagamentos"
+    ],
+    "anexos": false,
+    "dados_bancarios": false
+  },
+  "publicacao": false,
+  "envio": false,
+  "migracao_operacional": false,
+  "validacoes": {
+    "backend_testes": 396,
+    "python": "3.14.0",
+    "frontend": "lint, TypeScript, build e HTTP aprovados",
+    "preservacao": "34 tabelas anteriores conferidas",
+    "visual_interativa": "não realizada; bloqueio anterior do navegador respeitado"
+  },
+  "demo": {
+    "frontend": "http://localhost:3022/extratos",
+    "api": "http://127.0.0.1:8022",
+    "dados": "sintéticos em cópia isolada"
+  },
+  "proximo_sprint": 13,
+  "proximo_estado": "aguardando_confirmacao"
+}

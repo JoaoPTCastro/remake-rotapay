@@ -1,0 +1,2 @@
+import type { Catalogo } from "../lib/configuracoes-types";
+export function OperacaoSelecao({ itens, documento }: { itens: Catalogo[]; documento: "notas" | "pagamentos" }) { return <label>Operação descritiva (opcional)<select name="operacao_id" defaultValue=""><option value="">Sem operação do catálogo</option>{itens.filter(c => c.aplicavel_em === documento || c.aplicavel_em === "ambos").map(c => <option key={c.id} value={c.id}>{c.nome}</option>)}</select></label>; }

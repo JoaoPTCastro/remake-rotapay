@@ -1,0 +1,61 @@
+{
+  "sprint": "15A",
+  "estado": "concluido_localmente",
+  "sprint_15_completo": false,
+  "autorizacao": "podemos começar",
+  "data": "2026-10-03",
+  "entregas": [
+    "organizacoes e vinculos",
+    "identidade compartilhada de fornecedor",
+    "convites hash/validade/revogacao/aceite",
+    "cadastro por convite API",
+    "bloqueio financeiro novas lojas",
+    "auditoria central separada",
+    "interface organizacoes"
+  ],
+  "validacoes": {
+    "pytest": {
+      "aprovados": 478,
+      "novos": 17,
+      "segundos": 158.94,
+      "python": "3.14.0",
+      "avisos_preexistentes": 1
+    },
+    "lint": {
+      "erros": 0,
+      "avisos": 0
+    },
+    "typescript": "aprovado",
+    "lint_types": {
+      "erros": 0,
+      "avisos_preexistentes": 200
+    },
+    "build": "Next 16.3.8 aprovado; 54 paginas geradas",
+    "http": "aprovado",
+    "tabelas_anteriores_preservadas": 37,
+    "novas_tabelas": 6,
+    "init_idempotente": true,
+    "revisao": "sem P1/P2 pendentes no escopo 15A",
+    "visual_interativo": false,
+    "postgresql": false
+  },
+  "demo": {
+    "frontend": "http://localhost:3025/organizacoes",
+    "api": "http://127.0.0.1:8025",
+    "sqlite": "/tmp/rotapay-multiempresa-base-demo-20261003.db"
+  },
+  "pendencias": [
+    "15B isolamento financeiro/arquivos/links por loja",
+    "interface cadastro inicial fornecedor",
+    "portal limitado chaves/pagamentos/confirmacoes",
+    "Checkto por organizacao"
+  ],
+  "proxima_etapa": {
+    "sprint": "15B",
+    "estado": "proposta_aguarda_confirmacao"
+  },
+  "banco_operacional_alterado": false,
+  "convites_enviados": false,
+  "deploy": false,
+  "commit_push": false
+}

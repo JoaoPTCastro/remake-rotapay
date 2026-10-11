@@ -1,0 +1,28 @@
+{
+  "sprint": 10,
+  "nome": "Comprovantes e rastreabilidade",
+  "data": "2026-10-02",
+  "estado": "concluido_localmente",
+  "autorizacao": "continue",
+  "backend_testes": 323,
+  "novos_testes": 25,
+  "tempo_pytest_segundos": 76.35,
+  "lint_erros": 0,
+  "lint_avisos": 0,
+  "lint_tipado_avisos_preexistentes": 200,
+  "typescript": "aprovado",
+  "build": "Next16.3.8 aprovado",
+  "pdfjs": "6.3.289",
+  "auditoria_producao_vulnerabilidades_reportadas": 0,
+  "revisao": "sem P1/P2 pendentes",
+  "preservacao_tabelas_anteriores": 34,
+  "migracao_operacional": false,
+  "publicacao": false,
+  "proximo_sprint": 11,
+  "proximo_estado": "aguardando_confirmacao",
+  "pendencias": [
+    "Definição da loja sobre política gateway/correções/contestação e papéis dos participantes",
+    "PostgreSQL/Python3.14 não executados",
+    "Dependência de desenvolvimento brace-expansion preexistente indicada na auditoria completa"
+  ]
+}

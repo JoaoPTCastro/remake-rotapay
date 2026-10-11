@@ -1,0 +1,4 @@
+import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { API_URL } from "../../../../lib/api";
+export async function GET() { const token=(await cookies()).get("token")?.value; if (!token) return NextResponse.json({error:"Entre novamente."},{status:401}); try { const res=await fetch(`${API_URL}/loja/logo`,{headers:{Authorization:`Bearer ${token}`},cache:"no-store",redirect:"error"}); if (!res.ok) return NextResponse.json({error:"Logo indisponível."},{status:res.status}); if (res.headers.get("content-type")?.split(";")[0] !== "image/png") return NextResponse.json({error:"Formato inválido."},{status:415}); return new NextResponse(res.body,{headers:{"Content-Type":"image/png","Cache-Control":"private, no-store","X-Content-Type-Options":"nosniff","Content-Security-Policy":"sandbox; default-src 'none'"}}); } catch {return NextResponse.json({error:"Não foi possível acessar a logo."},{status:502});} }

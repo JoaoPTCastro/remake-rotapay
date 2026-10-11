@@ -1,0 +1,7 @@
+# Proposta para Caddy do HOST — não aplicada.
+rotapay.site {
+    reverse_proxy 127.0.0.1:3000
+}
+www.rotapay.site {
+    redir https://rotapay.site{uri} permanent
+}

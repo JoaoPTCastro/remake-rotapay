@@ -1,0 +1,4 @@
+# HTTPS automático via Let's Encrypt. Exige DNS do DOMAIN apontando p/ a VPS.
+{$DOMAIN} {
+	reverse_proxy web:3000
+}

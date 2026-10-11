@@ -1,0 +1,26 @@
+# Sprint A2 — 1 botão para subir tudo: docker compose up
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8000:8000"
+    volumes:
+      - pixdata:/data
+    environment:
+      SECRET_KEY: ${SECRET_KEY:-trocar-em-producao}
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  pixdata:

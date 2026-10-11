@@ -1,0 +1,9 @@
+FROM python:3.12-slim
+WORKDIR /srv
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY app ./app
+COPY scripts/backup_rotapay.py ./scripts/backup_rotapay.py
+ENV DATABASE_URL=sqlite:////data/pix.db UPLOAD_DIR=/data/uploads TENANT_DATABASE_DIR=/data/ambientes
+EXPOSE 8000
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
