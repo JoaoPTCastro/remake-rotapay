@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { BRAND } from "../lib/brand";
 import "./globals.css";
 
@@ -13,15 +14,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=t==='dark'?'dark':'light';}catch(e){document.documentElement.dataset.theme='light';}",
-          }}
-        />
-      </head>
-      <body>{children}</body>
+      <body>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {"try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=t==='dark'?'dark':'light';}catch(e){document.documentElement.dataset.theme='light';}"}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 }
