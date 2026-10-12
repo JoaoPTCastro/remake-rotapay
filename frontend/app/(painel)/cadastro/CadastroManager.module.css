@@ -32,3 +32,85 @@
 .manager code {
   overflow-wrap: anywhere;
 }
+.header,
+.sheetHeader,
+.filterbar,
+.linksRow,
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.header,
+.sheetHeader,
+.filterbar {
+  justify-content: space-between;
+}
+.actions,
+.linksRow {
+  justify-content: flex-start;
+}
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 20px 0 12px;
+}
+.alerts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+.alerts span {
+  border: 1px solid var(--warning);
+  color: var(--warning);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+.sheet {
+  margin-top: 24px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  background: var(--surface);
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+.panel {
+  display: grid;
+  gap: 14px;
+}
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+.summary {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+}
+.summary span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.summary strong {
+  font-size: 18px;
+}
+.cleanList {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
