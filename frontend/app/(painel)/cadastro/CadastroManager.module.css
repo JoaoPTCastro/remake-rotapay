@@ -133,6 +133,10 @@
   z-index: 25;
 }
 
+.popover > label:first-of-type {
+  display: none;
+}
+
 .popoverTitle {
   align-items: start;
   border-bottom: 1px solid #edf0f3;
