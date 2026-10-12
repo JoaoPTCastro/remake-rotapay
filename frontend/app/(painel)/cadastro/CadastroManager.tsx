@@ -110,7 +110,7 @@ export default function CadastroManager({ pessoas, filtroInicial, abaInicial, po
       <div className={styles.actions}><a className="btn-secondary" href="/intercambio">Importar / exportar</a>{podeEditar && <a className="btn" href="#novo-cadastro">Novo cadastro</a>}</div>
     </header>
     <AlertasInline pessoas={pessoas} />
-    {podeEditar && <details id="novo-cadastro"><summary>Novo cadastro</summary><Editor operacao="pessoa" pessoaId={null} itemId={null}><Dados /></Editor></details>}
+    {podeEditar && <details id="novo-cadastro" open><summary>Novo cadastro</summary><Editor operacao="pessoa" pessoaId={null} itemId={null}><Dados /></Editor></details>}
     <div className={styles.filters}>
       <label>Buscar<input value={busca} onChange={e => setBusca(e.target.value)} placeholder="Nome, ID, documento ou chave PIX" /></label>
       <label>Exibir<select value={filtro} onChange={e => setFiltro(e.target.value)}><option value="todos">Todos</option><option value="representante">Clientes</option><option value="fornecedor">Fornecedores</option><option value="ambos">Cliente e fornecedor</option></select></label>
