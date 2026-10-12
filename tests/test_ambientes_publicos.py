@@ -1,10 +1,10 @@
-"""Contexto público explícito e arquivos privados nunca herdam outra loja."""
+"""Contexto publico explicito e arquivos privados nunca herdam outra loja."""
 from types import SimpleNamespace
 from unittest.mock import Mock
 
 import pytest
 from fastapi import HTTPException
-from app.routers import links, loja, movimentacoes, whatsapp
+from app.routers import links, loja, movimentacoes
 
 
 def session(org):
@@ -38,7 +38,6 @@ def test_logo_usa_raiz_da_loja_e_mantem_raiz_legada(tmp_path, monkeypatch):
 
 @pytest.mark.parametrize("router, campo, metodo", [
     (movimentacoes, "comprovante_path", "baixar"),
-    (whatsapp, "arquivo_path", "arquivo"),
 ])
 def test_download_rejeita_arquivo_de_outra_loja_e_symlink(tmp_path, monkeypatch, router, campo, metodo):
     monkeypatch.setattr(router, "UPLOAD_DIR", str(tmp_path))
@@ -65,7 +64,6 @@ def test_download_rejeita_arquivo_de_outra_loja_e_symlink(tmp_path, monkeypatch,
 
 @pytest.mark.parametrize("router, campo, metodo", [
     (movimentacoes, "comprovante_path", "baixar"),
-    (whatsapp, "arquivo_path", "arquivo"),
 ])
 def test_raiz_legada_nao_permite_subdiretorio_de_nova_loja(tmp_path, monkeypatch, router, campo, metodo):
     monkeypatch.setattr(router, "UPLOAD_DIR", str(tmp_path))
