@@ -10,8 +10,10 @@ from .config import SECRET_KEY, ALGORITHM, TOKEN_MINUTES
 from .database import get_db, get_control_db
 from .models import User
 
-bearer = HTTPBearer()
+bearer = HTTPBearer(auto_error=False)
 PERFIS = ("admin", "financeiro", "operador", "consulta")
+DEV_BYPASS_AUTH = os.getenv("DEV_BYPASS_AUTH", "false").lower() == "true"
+DEV_BYPASS_EMAIL = os.getenv("DEV_BYPASS_EMAIL", "admin@local")
 
 
 def hash_pw(p: str) -> str:
@@ -58,8 +60,30 @@ def autenticar_token(token: str, db: Session):
     return u, org
 
 
-def current_user(request: Request, creds: HTTPAuthorizationCredentials = Depends(bearer),
+def _dev_bypass_user(db: Session) -> User:
+    u = db.query(User).filter(User.email == DEV_BYPASS_EMAIL).first()
+    if u:
+        return u
+    u = User(nome="Admin dev", email=DEV_BYPASS_EMAIL, senha_hash=hash_pw("admin123"), perfil="admin", ativo=True)
+    db.add(u)
+    db.flush()
+    try:
+        from .organizacoes_bootstrap import vincular_usuario_original
+        vincular_usuario_original(db, u)
+    except Exception:
+        pass
+    db.commit()
+    db.refresh(u)
+    return u
+
+
+def current_user(request: Request, creds: HTTPAuthorizationCredentials | None = Depends(bearer),
                  db: Session = Depends(get_control_db)) -> User:
+    if creds is None:
+        if DEV_BYPASS_AUTH:
+            request.state.organizacao_id = 1
+            return _dev_bypass_user(db)
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Não autenticado")
     user, org_id = autenticar_token(creds.credentials, db)
     request.state.organizacao_id = org_id
     return user
