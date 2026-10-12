@@ -2,12 +2,9 @@
 
 import { useMemo, useRef, useState } from "react";
 import {
-  ArrowDown,
-  ArrowUp,
   ArrowUpDown,
   BarChart3,
   Building2,
-  Check,
   Columns3,
   Download,
   Edit3,
@@ -214,7 +211,6 @@ export default function CadastroManager({ pessoas, filtroInicial, abaInicial, po
                   <div><h2>Filtrar cadastros</h2><p className="muted">A lista atualiza sem alterar dados.</p></div>
                   <button type="button" className="iconbtn" aria-label="Fechar filtros" onClick={() => setFilterOpen(false)}><X size={16} /></button>
                 </div>
-                <Opcoes nome="tipo_visual" titulo="Papel" valor={filtro} itens={[["todos", "Todos"], ["representante", "Clientes"], ["fornecedor", "Fornecedores"], ["ambos", "Cliente e fornecedor"]]} />
                 <label>
                   <span>Papel</span>
                   <select value={filtro} onChange={(event) => setFiltro(event.target.value)}>
