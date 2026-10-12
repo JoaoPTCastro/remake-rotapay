@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+const bypassAuth = process.env.DEV_BYPASS_AUTH === "true";
+
 function publicEntry(req: NextRequest, token: string | undefined) {
   if (
+    !bypassAuth &&
     !token &&
     req.nextUrl.pathname === "/" &&
     req.headers.get("host")?.split(":")[0] !== "app.rotapay.site"
@@ -29,6 +32,7 @@ export function proxy(req: NextRequest) {
     return NextResponse.next(); // páginas públicas com autorização própria
   if (["/pagar/", "/v/"].some((prefix) => pathname.startsWith(prefix)))
     return NextResponse.next(); // links públicos
+  if (bypassAuth) return NextResponse.next();
   if (!token && pathname !== "/login")
     return NextResponse.redirect(new URL("/login", req.url));
   if (token && pathname === "/login")
